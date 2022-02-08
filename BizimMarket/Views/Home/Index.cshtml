@@ -1,0 +1,43 @@
+﻿@model HomeViewModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="row">
+    <div class="col-md-3">
+        <h4 class="mt-3">Kategoriler</h4>
+        <div class="list-gorup">
+            <a asp-action="Index" class="list-group-item list-group-item-action @Active(null)">Tüm Ürünler</a> 
+
+            @foreach (var item in Model.Kategoriler)
+            {
+                <a asp-route-kategoriId="@item.Id" class="list-group-item list-group-item-action @Active(item.Id)">@item.Ad</a>
+                @*/?kategoriId=(tıkladıgının ıdsını vericek)*@
+            }
+        </div>
+    </div>
+    <div class="col-md-9">
+        <h4 class="mt-3">Ürünler</h4>
+
+        <div class="row">
+            @foreach (var item in Model.Urunler)
+            {
+                <div class="col-6 col-md-4">
+                    <img class="w-100" src="~/img/Urunler/@item.ResimYolu" />
+                    <h5>@item.Ad</h5>
+                    <p>₺@item.Fiyat.ToString("n2")</p>
+                </div>
+
+            }
+        </div>
+    </div>
+
+</div>
+
+@*active metotlastırdık ve gidip 14 satırda bu metodu kullandık*@
+@{
+    string Active(int? kategoriId)
+    {
+        return kategoriId == Model.KategoriId ? "active" : "";
+    }
+}
