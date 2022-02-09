@@ -1,0 +1,35 @@
+﻿@model IEnumerable<BizimMarket.Models.Kategori>
+
+@{
+    ViewData["Title"] = "Kategoriler";
+}
+
+
+
+<p>
+    <a asp-action="Create">Yeni Oluştur</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Ad)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td class="align-middle">
+                @Html.DisplayFor(modelItem => item.Ad)
+            </td>
+            <td class="text-end">
+                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-success">Düzenle</a> 
+                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-warning">Detaylar </a> 
+                <a asp-action="Delete" asp-route-id="@item.Id"class="btn btn-danger">Sil</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

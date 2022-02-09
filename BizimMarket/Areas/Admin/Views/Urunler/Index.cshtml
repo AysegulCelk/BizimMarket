@@ -1,0 +1,30 @@
+﻿@model List<Urun>
+@{
+    ViewData["Title"] = "Ürünler";
+}
+<a asp-controller="Urunler" asp-action="Yeni">Yeni Ürün</a>
+<table class="table table-admin">
+    <thead>
+        <tr>
+            <th></th>
+            <th>Id</th>
+            <th>Ad</th>
+            <th>Fiyat</th>
+            <th>Kategori</th>
+        </tr>
+
+    </thead>
+    <tbody>
+        @foreach(var item in Model)
+        {
+            <tr>
+                <td ><img src="~/img/Urunler/@item.ResimYolu" width="50"/></td>
+                <td >@item.Id</td>
+                <td >@item.Ad</td>
+                <td >@item.Fiyat.ToString("n2")</td>
+                <td >@item.Kategori.Ad</td>
+                
+            </tr>
+        }
+    </tbody>
+</table>

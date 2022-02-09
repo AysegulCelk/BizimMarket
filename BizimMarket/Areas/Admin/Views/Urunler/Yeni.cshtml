@@ -1,0 +1,33 @@
+﻿@model Urun
+@{
+    ViewData["Title"] = "Yeni Ürün";
+}
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div class="mb-3">
+                <label asp-for="Ad" class="form-label">Ad</label>
+                <input asp-for="Ad" type="text" class="form-control" />
+                <span asp-validation-for="Ad" class="form-text"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Fiyat" class="form-label">Fiyat</label>
+                <input asp-for="Fiyat" type="text" class="form-control" />
+                <span asp-validation-for="Fiyat" class="form-text"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="KategoriId" class="form-label">Kategori</label>
+                <select asp-for="KategoriId" asp-items="ViewBag.Kategoriler" class="form-select">
+                    <option value="">Seçiniz</option>
+                </select>
+                <span asp-validation-for="KategoriId" class="form-text"></span>
+                @*@Html.ValidationMessageFor(x=>x.KategoriId)*@
+            </div>
+
+            <button class="btn btn-primary">Ekle</button>
+        </form>
+    </div>
+
+</div>

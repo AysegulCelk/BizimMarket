@@ -5,15 +5,15 @@ namespace BizimMarket.Models
     public class Urun
     {
         public int Id { get; set; }
-        [Required, MaxLength(100)] //zorunlu hale getirdik 
+        [Required(ErrorMessage = "Ad alanı zorunludur."), MaxLength(100)] //zorunlu hale getirdik 
         public string Ad { get; set; }
         
         public decimal Fiyat { get; set; }
         public string ResimYolu { get; set; }
 
         //urun açıklamsı eklenebilir 
-
-        public int KategoriId { get; set; }
+        [Required( ErrorMessage="Kategori alanı zorunludur.")]
+        public int? KategoriId { get; set; }
         public Kategori Kategori { get; set; }
 
 
